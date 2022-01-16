@@ -62,7 +62,7 @@ class Blogs(models.Model):
     class Meta:
         verbose_name = '博文信息'
         verbose_name_plural = verbose_name
-        ordering = ('-createtime',)
+        ordering = ('-isTop','-createtime')
 
     def __str__(self):
         return self.title
