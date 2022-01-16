@@ -22,4 +22,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     path('mdeditor/', include('mdeditor.urls')),
+
+    path('blogs/',include('blogs.urls',namespace='blogs')),
+    #path('comments/', include('comments.urls',namespace='comments'))
+
+
+
 ]
