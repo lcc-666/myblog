@@ -53,78 +53,35 @@
                         </div>
                     </div>
                     <div class="layui-row">
+                        {% for blog in blogslist %}
                         <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" style="padding: 0 10px">
                             <div class="single-news">
                                 <div class="news-head">
-                                    <img src="image/1.jpg">
+                                    <img src="media/{{ blog.img }}">
                                     <a href="{%static '#'%}" class="link"><i class="fa fa-link"></i></a>
                                 </div>
                                 <div class="news-content">
                                     <h4>
                                         <a href="{%static '#'%}">
-                                            标题
+                                            {{ blog.title }}
                                         </a>
                                     </h4>
                                     <div class="date">
-                                        2017年2月16日
+                                        {{ blog.createtime }}
                                     </div>
                                     <p>
-                                        很想给你写封信,告诉你这里的天气. 昨夜的那场电影,还有我的心情.
+                                        {{ blog.content }}
                                     </p>
                                     <a href="{%static '#'%}" class="btn">
-                                        阅读更多 
+                                        阅读更多
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s" style="padding: 0 10px">
-                            <div class="single-news">
-                                <div class="news-head">
-                                    <img src="image/1.jpg">
-                                    <a href="{%static '#'%}" class="link"><i class="fa fa-link"></i></a>
-                                </div>
-                                <div class="news-content">
-                                    <h4>
-                                        <a href="{%static '#'%}">
-                                            标题
-                                        </a>
-                                    </h4>
-                                    <div class="date">
-                                        2017年2月16日
-                                    </div>
-                                    <p>
-                                        很想给你写封信,告诉你这里的天气. 昨夜的那场电影,还有我的心情.
-                                    </p>
-                                    <a href="{%static '#'%}" class="btn">
-                                        阅读更多 
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".4s" style="padding: 0 10px">
-                            <div class="single-news">
-                                <div class="news-head">
-                                    <img src="image/1.jpg">
-                                    <a href="{%static '#'%}" class="link"><i class="fa fa-link"></i></a>
-                                </div>
-                                <div class="news-content">
-                                    <h4>
-                                        <a href="{%static '#'%}">
-                                            标题
-                                        </a>
-                                    </h4>
-                                    <div class="date">
-                                        2017年2月16日
-                                    </div>
-                                    <p>
-                                        很想给你写封信,告诉你这里的天气. 昨夜的那场电影,还有我的心情.
-                                    </p>
-                                    <a href="{%static '#'%}" class="btn">
-                                        阅读更多 
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+
+                        {% endfor %}
+
+
                     </div>
                 </div>
             </div>
@@ -188,7 +145,7 @@
                                 <li class="active"><a href="{%static '#'%}"><i class="fa fa-share"></i>资源</a></li>
                                 <li class="active"><a href="{%static '#'%}"><i class="fa fa-snowflake-o"></i>日记</a></li>
                                 <li class="active"><a href="{%static '#'%}"><i class="fa fa-files-o"></i>归档</a></li>
-                            </ul>                   
+                            </ul>
                         </div>
                     </div>
                     <div class="layui-col-xs12 layui-col-sm12 layui-col-md4">
@@ -212,10 +169,10 @@
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>
     </footer>
-    <script src="layui/layui.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/index.js"></script>
+    <script src="{% static 'layui/layui.js '%}"></script>
+    <script src="{% static 'js/wow.min.js '%}"></script>
+    <script src="{% static 'js/index.js '%}"></script>
 </body>
 </html>
