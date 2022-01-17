@@ -25,9 +25,15 @@ class ArticleView(View):
         }
         return render(request,'article.html',context=data)
 
+import markdown
 class DetailView(View):
     def get(self,request,pk):
         blogs=Blogs.objects.get(id=pk)
+        blogs.content = markdown.markdown(blogs.content, extensions=[
+            'markdown.extensions.extra',
+            'markdown.extensions.codehilite',
+            'markdown.extensions.toc'
+        ])
         data = {
             'blog': blogs
         }

@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{% static 'css/nprogress.css'%}" />
     <link rel="stylesheet" href="{% static 'css/message.css'%}" />
     <link rel="stylesheet" href="{% static 'css/blog.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/code.css' %}">
+
 
 </head>
 <body>
@@ -84,7 +86,18 @@
                                 </div>
                                 <div id="aplayer" style="margin:5px 0"></div>
                                 <h6>延伸阅读</h6>
-                                <ol class="b-relation"></ol>
+                                <ol class="b-relation">
+                                    {% load blogstags %}.
+                                    {% get_top_blogs as blogs %}
+                                    {% for ta in blogs %}
+                                        <li><a href="article.html">{{ ta.title }}</a></li>
+                                    {% empty %}
+                                        <li>暂无数据</li>
+                                    {% endfor %}
+
+
+
+                                </ol>
                             </div>
                             <div class="bdsharebuttonbox share" data-tag="share_1">
                                 <ul>
