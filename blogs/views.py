@@ -27,11 +27,21 @@ class ArticleView(View):
 
 class DetailView(View):
     def get(self,request,pk):
-        print(pk)
         blogs=Blogs.objects.get(id=pk)
         data = {
             'blog': blogs
         }
-        print(blogs)
 
         return render(request, 'detail.html',context=data)
+
+class FilingView(View):
+    def get(self,request,year,month):
+        blogslist=Blogs.objects.filter(createtime__year=year,createtime__month=month)
+        blogtypes = Type.objects.all()
+        data = {
+            'blogslist': blogslist,
+            'blogtypes': blogtypes
+        }
+        return render(request,'article.html',context=data)
+
+

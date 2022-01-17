@@ -104,10 +104,6 @@
 							</aside>
 						</section>
                         {% endfor %}
-
-
-
-
 		            </article>
 
 		        </div>
@@ -167,10 +163,21 @@
 					    <h5 class="other-item-title">置顶推荐</h5>
 					    <div class="inner">
 					        <ul class="hot-list-article">
-                                {% load blogtags %}
-                                {% get_top_blogs %}
-                                {% for th in get_top_blogs %}
-                                    <li> <a href="/Blog/Read/16">{{ tb.title }}</a></li>
+                                {% load blogstags %}
+                                {% get_top_blogs as blogs %}
+                                {% for tb in blogs %}
+                                    <li> <a href="{{ tb.get_detail_url }}">{{ tb.title }}</a></li>
+                                {% endfor %}
+					        </ul>
+					    </div>
+					</div>
+                    <div class="other-item">
+					    <h5 class="other-item-title">归档</h5>
+					    <div class="inner">
+					        <ul class="hot-list-article">
+                                {% get_date_list as datelist %}
+                                {% for d in datelist %}
+                                    <li> <a href="{% url 'blogs:filing' d.year d.month %}">{{ d.year }}年{{ d.month }}月</a></li>
                                 {% endfor %}
 					        </ul>
 					    </div>
@@ -185,21 +192,6 @@
 							</div> -->
 								<dd>
 									<a class="tag">python</a>
-								</dd>
-								<dd>
-									<a class="tag">java ee</a>
-								</dd>
-								<dd>
-									<a class="tag">web ui</a>
-								</dd>
-								<dd>
-									<a class="tag">ASP.NET</a>
-								</dd>
-								<dd>
-									<a class="tag">星座</a>
-								</dd>
-								<dd>
-									<a class="tag">购物</a>
 								</dd>
 
 							</dl>
