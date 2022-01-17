@@ -70,7 +70,7 @@
                             {% endif %}
 							<h5 class="title">
 								<span class="fc-blue">【原创】</span>
-								<a href="read.html">{{ blog.title }}</a>
+								<a href="{% url 'blogs:detail' blog.id %}">{{ blog.title }}</a>
 							</h5>
 							<div class="time">
 								<span class="day">{{ blog.createtime|date:'d' }}</span>
@@ -78,13 +78,13 @@
 								<span class="year fs-18 ml10">{{ blog.createtime|date:'Y' }}</span>
 							</div>
 							<div class="content">
-								<a href="read.html" class="cover img-light">
+								<a href="{{ blog.get_detail_url }}" class="cover img-light">
 									<img src="media/{{ blog.img }}">
 								</a>
 								{{ blog.abstract }}
 							</div>
 							<div class="read-more">
-								<a href="read.html" class="fc-black f-fwb">继续阅读</a>
+								<a href="{{ blog.get_detail_url }}" class="fc-black f-fwb">继续阅读</a>
 							</div>
 							<aside class="f-oh footer">
 								<div class="f-fl tags">
@@ -167,9 +167,11 @@
 					    <h5 class="other-item-title">置顶推荐</h5>
 					    <div class="inner">
 					        <ul class="hot-list-article">
-					                <li> <a href="/Blog/Read/16">.NET Spire.Doc组件</a></li>
-					                <li> <a href="/Blog/Read/14">MUI框架-快速开发APP</a></li>
-					                <li> <a href="/Blog/Read/9">2018最新版QQ音乐api调用</a></li>
+                                {% load blogtags %}
+                                {% get_top_blogs %}
+                                {% for th in get_top_blogs %}
+                                    <li> <a href="/Blog/Read/16">{{ tb.title }}</a></li>
+                                {% endfor %}
 					        </ul>
 					    </div>
 					</div>

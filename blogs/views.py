@@ -24,3 +24,14 @@ class ArticleView(View):
             'blogtypes':blogtypes
         }
         return render(request,'article.html',context=data)
+
+class DetailView(View):
+    def get(self,request,pk):
+        print(pk)
+        blogs=Blogs.objects.get(id=pk)
+        data = {
+            'blog': blogs
+        }
+        print(blogs)
+
+        return render(request, 'detail.html',context=data)

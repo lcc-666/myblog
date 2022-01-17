@@ -58,11 +58,11 @@
                             <div class="single-news">
                                 <div class="news-head">
                                     <img src="media/{{ blog.img }}">
-                                    <a href="{%static '#'%}" class="link"><i class="fa fa-link"></i></a>
+                                    <a href="{{ blog.get_detail_url }}" class="link"><i class="fa fa-link"></i></a>
                                 </div>
                                 <div class="news-content">
                                     <h4>
-                                        <a href="{%static '#'%}">
+                                        <a href="{{ blog.get_detail_url }}">
                                             {{ blog.title }}
                                         </a>
                                     </h4>
@@ -72,7 +72,7 @@
                                     <p>
                                         {{ blog.content }}
                                     </p>
-                                    <a href="{%static '#'%}" class="btn">
+                                    <a href="{{ blog.get_detail_url }}" class="btn">
                                         阅读更多
                                     </a>
                                 </div>

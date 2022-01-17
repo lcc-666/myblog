@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.urls import reverse
 from django.utils.html import format_html
 from mdeditor.fields import MDTextField
 
@@ -58,6 +59,9 @@ class Blogs(models.Model):
         return format_html("<img src='{}' style='width:40px;height:40px'>".format(self.img.url))
 
     get_img.short_description = format_html("<a href='#'>封面图片</a>")
+
+    def get_detail_url(self):
+        return reverse('[blogs]:detail', kwargs={'pk': self.pk})
 
     class Meta:
         verbose_name = '博文信息'
