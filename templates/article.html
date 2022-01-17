@@ -190,9 +190,15 @@
 								<span class="fa fa-tags fs-16"></span>
 								<a class="tag">ASP.NET MVC</a>
 							</div> -->
-								<dd>
-									<a class="tag">python</a>
+                                {% get_tags_list as datelist %}
+                                {% for bt in datelist %}
+                                    <dd>
+									<a class="tag">{{ bt.name }}</a>
 								</dd>
+
+                                {% endfor %}
+
+
 
 							</dl>
 						</div>
