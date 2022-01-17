@@ -24,7 +24,7 @@ urlpatterns = [
     path('mdeditor/', include('mdeditor.urls')),
 
     path('blogs/',include('blogs.urls',namespace='blogs')),
-    #path('comments/', include('comments.urls',namespace='comments'))
+    path('comments/', include('comments.urls',namespace='comments'))
 
 
 
