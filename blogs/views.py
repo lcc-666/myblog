@@ -11,22 +11,29 @@ class IndexView(View):
             'blogslist':blogslist
         }
         return render(request,'index.html',context=data)
-
+from django.core.paginator import Paginator
 class ArticleView(View):
     def get(self,request):
         type_id=request.GET.get('type')
+        page=request.GET.get('page',1)
         if type_id is None:
             blogslist=Blogs.objects.all()
         else:
             blogslist=Blogs.objects.filter(blogtype_id=type_id)
         blogtypes=Type.objects.all()
-        data={
-            'blogslist':blogslist,
-            'blogtypes':blogtypes
+        page_obj=Paginator(blogslist,5)
+        page_data=page_obj.get_page(page)
+        data_count=page_obj.count
+
+        data = {
+            'blogslist': page_data,
+            'blogtypes': blogtypes,
+            'data_count':data_count
         }
         return render(request,'article.html',context=data)
 
 import markdown
+
 class DetailView(View):
     def get(self,request,pk):
         blog=Blogs.objects.get(id=pk)
@@ -42,6 +49,8 @@ class DetailView(View):
             'comments':comments
 
         }
+        blog.rednum+=1
+        blog.save()
 
         return render(request, 'detail.html',context=data)
 
