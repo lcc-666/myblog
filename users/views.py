@@ -18,8 +18,7 @@ class LoginView(View):
         user = User.objects.get(username=username)
         if user.check_password(password):
             auth.login(request,user)
-            print('654')
-            #return render(request, 'article.html')
+            request.session['status'] = 1
             return redirect(reverse('blogs:article'))
         else:
             return render(request, 'login.html')
