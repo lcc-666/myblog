@@ -21,6 +21,7 @@ class ArticleView(View):
         else:
             blogslist=Blogs.objects.filter(blogtype_id=type_id)
         blogtypes=Type.objects.all()
+        hot=blogslist[:8]
         page_obj=Paginator(blogslist,5)
         page_data=page_obj.get_page(page)
         data_count=page_obj.count
@@ -28,8 +29,10 @@ class ArticleView(View):
         data = {
             'blogslist': page_data,
             'blogtypes': blogtypes,
-            'data_count':data_count
+            'data_count':data_count,
+            'hot':hot
         }
+        print(len(blogslist),len(hot))
         return render(request,'article.html',context=data)
 
 import markdown
@@ -42,7 +45,6 @@ class DetailView(View):
             'markdown.extensions.codehilite',
             'markdown.extensions.toc'
         ])
-        #comments=Comments.objects.filter(blog=blog)
         comments=Comments.objects.filter(blog_id=pk,status=1)
         data = {
             'blog': blog,
@@ -60,7 +62,7 @@ class FilingView(View):
         blogtypes = Type.objects.all()
         data = {
             'blogslist': blogslist,
-            'blogtypes': blogtypes
+            'blogtypes': blogtypes,
         }
         return render(request,'article.html',context=data)
 

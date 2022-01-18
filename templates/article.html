@@ -150,14 +150,11 @@
 					    <h5 class="other-item-title">热门文章</h5>
 					    <div class="inner">
 					        <ul class="hot-list-article">
-					                <li> <a href="/Blog/Read/9">2018最新版QQ音乐api调用</a></li>
-					                <li> <a href="/Blog/Read/12">模板分享</a></li>
-					                <li> <a href="/Blog/Read/13">逆水寒</a></li>
-					                <li> <a href="/Blog/Read/4">序章</a></li>
-					                <li> <a href="/Blog/Read/7">解决百度分享插件不支持https</a></li>
-					                <li> <a href="/Blog/Read/11">使用码云和VS托管本地代码</a></li>
-					                <li> <a href="/Blog/Read/14">MUI框架-快速开发APP</a></li>
-					                <li> <a href="/Blog/Read/8">NPOI导入导出Excel</a></li>
+                                {% for foo in hot %}
+                                    <li> <a href="{{ foo.get_detail_url }}">{{ foo.title }}</a></li>
+                                {% endfor %}
+
+
 					        </ul>
 					    </div>
 					</div>
