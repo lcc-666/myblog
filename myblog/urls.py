@@ -27,6 +27,4 @@ urlpatterns = [
     path('comments/', include('comments.urls',namespace='comments')),
     path('users/',include('users.urls',namespace='user'))
 
-
-
 ]

@@ -64,4 +64,7 @@ class FilingView(View):
         }
         return render(request,'article.html',context=data)
 
+    def page_not_found(request):
+        return render(request, '404.html')
+
 
