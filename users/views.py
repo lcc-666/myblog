@@ -15,10 +15,13 @@ class LoginView(View):
         username=request.POST.get('logname')
         password=request.POST.get('logpass')
         User = get_user_model()
-        user = User.objects.get(username=username)
+        try:
+            user = User.objects.get(username=username)
+        except:
+            return render(request, 'login.html', context={'data': '用户名或密码错误'})
         if user.check_password(password):
             auth.login(request,user)
             request.session['status'] = 1
             return redirect(reverse('blogs:article'))
         else:
-            return render(request, 'login.html')
+            return render(request, 'login.html',context={'data':'用户名或密码错误'})
