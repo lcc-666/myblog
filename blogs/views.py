@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from blogs.models import *
+from comments.models import Comments
 # Create your views here.
 class IndexView(View):
     def get(self,request):
@@ -28,14 +29,18 @@ class ArticleView(View):
 import markdown
 class DetailView(View):
     def get(self,request,pk):
-        blogs=Blogs.objects.get(id=pk)
-        blogs.content = markdown.markdown(blogs.content, extensions=[
+        blog=Blogs.objects.get(id=pk)
+        blog.content = markdown.markdown(blog.content, extensions=[
             'markdown.extensions.extra',
             'markdown.extensions.codehilite',
             'markdown.extensions.toc'
         ])
+        #comments=Comments.objects.filter(blog=blog)
+        comments=Comments.objects.filter(blog_id=pk,status=1)
         data = {
-            'blog': blogs
+            'blog': blog,
+            'comments':comments
+
         }
 
         return render(request, 'detail.html',context=data)

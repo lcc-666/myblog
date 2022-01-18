@@ -89,7 +89,9 @@
 							<aside class="f-oh footer">
 								<div class="f-fl tags">
 									<span class="fa fa-tags fs-16"></span>
-									<a class="tag">ASP.NET MVC</a>
+                                    {% for tag in blog.tags.all %}
+                                    <a class="tag">{{ tag.name }}</a>
+                                    {% endfor %}
 								</div>
 								<div class="f-fr">
 									<span class="read">
@@ -98,7 +100,7 @@
 									</span>
 									<span class="ml20">
 										<i class="fa fa-comments fs-16"></i>
-										<a href="javascript:void(0)" class="num fc-grey">{{ blog.commentnum }}</a>
+										<a href="javascript:void(0)" class="num fc-grey">{{ blog.comments_set.count }}</a>
 									</span>
 								</div>
 							</aside>

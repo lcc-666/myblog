@@ -26,8 +26,8 @@ class CreateVIem(View):
         com=Comments()
         com.blog=blog
         if acceptparent is not None:
-            com.acceptparent=acceptparent
-            com.targetuser=targetuser
+            com.acceptparent_id=acceptparent
+            com.targetuser_idr=targetuser
         com.senduser=senduser
         com.content=content
         com.status=1
