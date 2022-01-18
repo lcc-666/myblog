@@ -25,3 +25,8 @@ class LoginView(View):
             return redirect(reverse('blogs:article'))
         else:
             return render(request, 'login.html',context={'data':'用户名或密码错误'})
+
+class LogoutView(View):
+    def get(self,request):
+        request.session['status']=0
+        return redirect(reverse('blogs:index'))

@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, re_path, include
 from django.views.static import serve
 from myblog import settings
+from django.views import static
+from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +27,7 @@ urlpatterns = [
 
     path('blogs/',include('blogs.urls',namespace='blogs')),
     path('comments/', include('comments.urls',namespace='comments')),
-    path('users/',include('users.urls',namespace='user'))
-
+    path('users/',include('users.urls',namespace='user')),
+    url(r'^static/(?P<path>.*)$', static.serve,
+          {'document_root': settings.STATIC_ROOT}, name='static'),
 ]
