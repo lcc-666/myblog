@@ -2,7 +2,6 @@ from django.shortcuts import get_object_or_404, redirect
 from django.views import View
 from comments.models import Comments
 from blogs.models import Blogs
-from django.urls import reverse
 from django.shortcuts import render
 # Create your views here.
 
