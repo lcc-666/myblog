@@ -49,7 +49,7 @@ class DetailView(View):
             'comments':comments
 
         }
-        blog.rednum+=1
+        blog.readnum+=1
         blog.save()
 
         return render(request, 'detail.html',context=data)
