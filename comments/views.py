@@ -7,7 +7,6 @@ from django.shortcuts import render
 
 class CreateVIem(View):
     def post(self, request, pk):
-        print(request.session['status'])
         blog = get_object_or_404(Blogs,id=pk)
         if request.session['status']!= 1:
             return render(request, 'login.html', context={'data': '请先登录后在评论' })
